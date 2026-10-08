@@ -5,7 +5,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { Button } from '../ui/Button'
 
 export const Header: React.FC = () => {
-  const { user, signOut } = useAuth()
+  const { user, isGuest, signOut } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
@@ -60,12 +60,18 @@ export const Header: React.FC = () => {
                   className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 >
                   <User size={20} />
-                  <span>{user.email}</span>
+                  <span>{isGuest ? 'Guest' : user.email}</span>
                 </Link>
-                <Button variant="outline" size="sm" onClick={handleSignOut}>
-                  <LogOut size={16} className="mr-2" />
-                  Sign Out
-                </Button>
+                {isGuest ? (
+                  <Link to="/login">
+                    <Button variant="outline" size="sm">Sign In</Button>
+                  </Link>
+                ) : (
+                  <Button variant="outline" size="sm" onClick={handleSignOut}>
+                    <LogOut size={16} className="mr-2" />
+                    Sign Out
+                  </Button>
+                )}
               </div>
 
               <button
@@ -111,12 +117,22 @@ export const Header: React.FC = () => {
               >
                 Profile
               </Link>
-              <button
-                onClick={handleSignOut}
-                className="text-left text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-              >
-                Sign Out
-              </button>
+              {isGuest ? (
+                <Link
+                  to="/login"
+                  className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Sign In
+                </Link>
+              ) : (
+                <button
+                  onClick={handleSignOut}
+                  className="text-left text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+                >
+                  Sign Out
+                </button>
+              )}
             </nav>
           </div>
         )}

@@ -42,6 +42,14 @@ export const LoginForm: React.FC = () => {
               create a new account
             </Link>
           </p>
+          <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
+            <Link
+              to="/dashboard"
+              className="font-medium text-primary-600 hover:text-primary-500"
+            >
+              Continue as guest
+            </Link>
+          </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {error && (

@@ -2,8 +2,20 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import type { User, Session } from '@supabase/supabase-js'
 import { supabase } from '../lib/supabase'
 
+// The site is a demo, so visitors who aren't signed in browse as this guest user
+// instead of being sent to the login/sign-up pages.
+const GUEST_USER = {
+  id: '00000000-0000-0000-0000-000000000000',
+  email: 'guest@demo.local',
+  app_metadata: {},
+  user_metadata: { full_name: 'Guest' },
+  aud: 'authenticated',
+  created_at: new Date(0).toISOString(),
+} as User
+
 interface AuthContextType {
   user: User | null
+  isGuest: boolean
   session: Session | null
   loading: boolean
   signIn: (email: string, password: string) => Promise<{ error: any }>
@@ -91,7 +103,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }
 
   const value = {
-    user,
+    user: user ?? GUEST_USER,
+    isGuest: !user,
     session,
     loading,
     signIn,
