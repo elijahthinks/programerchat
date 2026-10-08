@@ -63,8 +63,8 @@ BEGIN
   )
   ON CONFLICT DO NOTHING;
 
-  RAISE NOTICE '✅ Test user created successfully!';
-  RAISE NOTICE '✅ Test conversation created!';
+  RAISE NOTICE 'Test user created successfully!';
+  RAISE NOTICE 'Test conversation created!';
 END $$;
 
 COMMIT;

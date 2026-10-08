@@ -58,10 +58,10 @@ SELECT
   p.full_name,
   up.availability_status,
   CASE 
-    WHEN up.availability_status = 'online' THEN '✅ Available'
-    WHEN up.availability_status = 'offline' THEN '❌ Offline'
-    WHEN up.availability_status IS NULL THEN '❌ No Preferences'
-    ELSE '⏸️ ' || up.availability_status
+    WHEN up.availability_status = 'online' THEN 'Available'
+    WHEN up.availability_status = 'offline' THEN 'Offline'
+    WHEN up.availability_status IS NULL THEN 'No Preferences'
+    ELSE up.availability_status
   END as status
 FROM auth.users u
 LEFT JOIN profiles p ON p.id = u.id

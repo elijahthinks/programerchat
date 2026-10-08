@@ -59,13 +59,13 @@ After creating/updating the `.env` file:
 ## Verification
 
 After running the migrations, you should see these tables in your Supabase dashboard:
-- ✅ profiles
-- ✅ user_preferences  
-- ✅ conversations
-- ✅ messages
-- ✅ interview_prompts (with ~60 rows)
-- ✅ conversation_prompts
-- ✅ feedback
+- profiles
+- user_preferences  
+- conversations
+- messages
+- interview_prompts (with ~60 rows)
+- conversation_prompts
+- feedback
 
 You can verify by going to **Table Editor** in the Supabase dashboard.
 

@@ -9,7 +9,7 @@ Follow these **3 simple steps** to create a test user for chatting:
 3. Fill in:
    - **Email**: `testuser@example.com`
    - **Password**: `testpassword123`
-   - ✅ Check **"Auto Confirm User"**
+   - Check **"Auto Confirm User"**
 4. Click **"Create User"**
 5. **Copy the User ID** (UUID) - you'll see it in the user list
 
@@ -78,7 +78,7 @@ RETURNING id as conversation_id;
 -- ('CONVERSATION_ID_FROM_ABOVE', 'TEST_USER_ID_HERE', 'Hello! This is a test message.');
 ```
 
-## Done! 🎉
+## Done!
 
 Now you have two ways to test:
 

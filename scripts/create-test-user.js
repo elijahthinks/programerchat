@@ -17,7 +17,7 @@ const supabaseUrl = process.env.VITE_SUPABASE_URL
 const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('❌ Missing Supabase environment variables!')
+  console.error('Missing Supabase environment variables!')
   console.error('Make sure .env file has VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY')
   process.exit(1)
 }
@@ -25,7 +25,7 @@ if (!supabaseUrl || !supabaseAnonKey) {
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 async function createTestUser() {
-  console.log('🚀 Creating test user...\n')
+  console.log('Creating test user...\n')
 
   try {
     // Step 1: Create auth user
@@ -38,11 +38,11 @@ async function createTestUser() {
 
     if (authError) {
       if (authError.message.includes('already registered')) {
-        console.log('⚠️  Test user already exists, fetching existing user...')
+        console.log('Test user already exists, fetching existing user...')
         const { data: existingUsers } = await supabase.auth.admin.listUsers()
         const testUser = existingUsers.users.find(u => u.email === 'testuser@example.com')
         if (!testUser) {
-          console.error('❌ Could not find existing test user')
+          console.error('Could not find existing test user')
           process.exit(1)
         }
         await createUserData(testUser.id)
@@ -55,12 +55,12 @@ async function createTestUser() {
       throw new Error('Failed to create auth user')
     }
 
-    console.log('✅ Auth user created:', authData.user.id)
+    console.log('Auth user created:', authData.user.id)
     await createUserData(authData.user.id)
 
   } catch (error) {
-    console.error('❌ Error:', error.message)
-    console.log('\n📝 Manual setup required:')
+    console.error('Error:', error.message)
+    console.log('\nManual setup required:')
     console.log('1. Go to Supabase Dashboard > Authentication > Users')
     console.log('2. Create user: testuser@example.com / testpassword123')
     console.log('3. Run quick_test_setup.sql in SQL Editor')
@@ -85,10 +85,10 @@ async function createUserData(userId) {
     })
 
   if (profileError) {
-    console.error('❌ Profile error:', profileError.message)
+    console.error('Profile error:', profileError.message)
     throw profileError
   }
-  console.log('✅ Profile created')
+  console.log('Profile created')
 
   // Create preferences
   console.log('\nStep 3: Creating preferences...')
@@ -103,15 +103,15 @@ async function createUserData(userId) {
     })
 
   if (prefsError) {
-    console.error('❌ Preferences error:', prefsError.message)
+    console.error('Preferences error:', prefsError.message)
     throw prefsError
   }
-  console.log('✅ Preferences created')
+  console.log('Preferences created')
 
   // Get current user
   const { data: { user: currentUser } } = await supabase.auth.getUser()
   if (!currentUser) {
-    console.log('\n⚠️  Not logged in. Please log in first, then create a conversation manually.')
+    console.log('\nNot logged in. Please log in first, then create a conversation manually.')
     return
   }
 
@@ -130,10 +130,10 @@ async function createUserData(userId) {
     .single()
 
   if (convError) {
-    console.error('❌ Conversation error:', convError.message)
+    console.error('Conversation error:', convError.message)
     throw convError
   }
-  console.log('✅ Conversation created:', convData.id)
+  console.log('Conversation created:', convData.id)
 
   // Add test message
   console.log('\nStep 5: Adding test message...')
@@ -146,16 +146,16 @@ async function createUserData(userId) {
     })
 
   if (msgError) {
-    console.error('⚠️  Message error (non-critical):', msgError.message)
+    console.error('Message error (non-critical):', msgError.message)
   } else {
-    console.log('✅ Test message added')
+    console.log('Test message added')
   }
 
-  console.log('\n🎉 Test user setup complete!')
-  console.log('\n📋 Test User Credentials:')
+  console.log('\nTest user setup complete!')
+  console.log('\nTest User Credentials:')
   console.log('   Email: testuser@example.com')
   console.log('   Password: testpassword123')
-  console.log('\n💡 You can now:')
+  console.log('\nYou can now:')
   console.log('   1. Open the conversation from your Dashboard')
   console.log('   2. Or sign in as test user in an incognito window')
   console.log('   3. Start chatting!')

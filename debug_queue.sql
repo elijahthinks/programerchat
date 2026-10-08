@@ -59,10 +59,10 @@ SELECT
   u.email,
   up.availability_status,
   CASE 
-    WHEN up.availability_status = 'online' THEN '✅ Available'
-    WHEN up.availability_status = 'offline' THEN '❌ Offline'
-    WHEN up.availability_status = 'away' THEN '⏸️ Away'
-    ELSE '❓ Unknown'
+    WHEN up.availability_status = 'online' THEN 'Available'
+    WHEN up.availability_status = 'offline' THEN 'Offline'
+    WHEN up.availability_status = 'away' THEN 'Away'
+    ELSE 'Unknown'
   END as status_display
 FROM auth.users u
 LEFT JOIN user_preferences up ON up.user_id = u.id

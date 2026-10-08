@@ -20,7 +20,7 @@ INSERT INTO user_preferences (
   availability_status  -- This is the key!
 ) VALUES (
   'TEST_USER_UUID_HERE'::UUID,
-  'online'  -- ✅ This makes them appear in matching
+  'online'  -- This makes them appear in matching
 )
 ON CONFLICT (user_id) DO UPDATE SET
   availability_status = 'online';  -- Keep them online
@@ -29,7 +29,7 @@ ON CONFLICT (user_id) DO UPDATE SET
 ## Testing Steps
 
 1. **Create test user** (follow TEST_USER_SETUP.md)
-2. **Make sure test user has `availability_status = 'online'`** ✅
+2. **Make sure test user has `availability_status = 'online'`**
 3. **Go to Dashboard** → Click **"Find a Practice Partner"**
 4. **Click "Join Queue"**
 5. **Wait 3 seconds** → You should be matched with the test user!

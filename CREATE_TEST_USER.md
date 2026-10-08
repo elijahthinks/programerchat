@@ -11,7 +11,7 @@ Follow these steps to create a test user so you can test the chatting functional
 4. Fill in:
    - **Email**: `testuser@example.com`
    - **Password**: `testpassword123`
-   - **Auto Confirm User**: ✅ (check this)
+   - **Auto Confirm User**: (check this)
 5. Click **Create User**
 6. **Copy the User ID** (UUID) - you'll need this!
 
