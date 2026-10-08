@@ -156,10 +156,17 @@ The built files will be in the `dist` directory, ready for deployment to Vercel,
 
 ### Frontend (Vercel)
 
+The repo includes a `vercel.json` that builds with Vite, serves the `dist` directory, and rewrites all routes to `index.html` so client-side routes (e.g. `/dashboard`) work on refresh and direct links.
+
 1. Push your code to GitHub
-2. Import the project in Vercel
-3. Add environment variables in Vercel dashboard
-4. Deploy
+2. Import the project in Vercel (the Vite framework preset is detected automatically)
+3. In Project Settings > Environment Variables, add:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+   - `VITE_GITHUB_CLIENT_ID` (optional)
+   - `VITE_LINKEDIN_CLIENT_ID` (optional)
+4. Deploy (redeploy after changing environment variables, since `VITE_` variables are baked in at build time)
+5. In Supabase, go to Authentication > URL Configuration and add your Vercel domain (e.g. `https://your-app.vercel.app`) to the Site URL and Redirect URLs
 
 ### Database (Supabase)
 
