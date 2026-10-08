@@ -4,13 +4,13 @@ A simple test platform where tech professionals can connect for random short cal
 
 ## Features
 
-- 🔐 **Authentication & Verification**: Email signup with LinkedIn/GitHub verification
-- 👤 **User Profiles**: Complete profile setup with experience level and tech stack
-- 🎯 **Smart Matching**: Queue-based matching system with preference support
-- 💬 **Real-time Chat**: Text conversations with 10-minute timer
-- 📹 **Video Calls**: WebRTC-based video calling
-- 📝 **Interview Prompts**: Random technical, behavioral, and system design prompts
-- 🎨 **Modern UI**: Responsive design with dark mode support
+- **Authentication & Verification**: Email signup with LinkedIn/GitHub verification
+- **User Profiles**: Complete profile setup with experience level and tech stack
+- **Smart Matching**: Queue-based matching system with preference support
+- **Real-time Chat**: Text conversations with 10-minute timer
+- **Video Calls**: WebRTC-based video calling
+- **Interview Prompts**: Random technical, behavioral, and system design prompts
+- **Modern UI**: Responsive design with dark mode support
 
 ## Tech Stack
 
